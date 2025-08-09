@@ -1,10 +1,12 @@
 import { Component } from '@angular/core';
-import { Producto } from "../producto/producto.model";
 import { FormsModule } from '@angular/forms';
+import { Formulario } from "../formulario/formulario";
+import { Producto } from '../producto/producto.model';
+import { ProductoComponent } from "../producto/producto";
 
 @Component({
   selector: 'app-listado-productos',
-  imports: [FormsModule],
+  imports: [FormsModule, Formulario, ProductoComponent],
   templateUrl: './listado-productos.html',
   styleUrl: './listado-productos.css'
 })
@@ -15,17 +17,7 @@ export class ListadoProductos {
     new Producto("Playera", 50.0)
   ];
 
-  descripcionInput: string = "";
-  precioInput: number | null = null;
-
-  agregarProducto() {
-    if (this.descripcionInput.trim() === '' || this.precioInput == null || this.precioInput <= 0) {
-      console.log("Por favor, ingrese una descripción válida y un precio mayor a 0.");
-      return;
-    }
-
-    this.productos.push(new Producto(this.descripcionInput, this.precioInput));
-    this.descripcionInput = "";
-    this.precioInput = null;
+  agregarProducto(producto: Producto) {
+    this.productos.push(producto);
   }
 }

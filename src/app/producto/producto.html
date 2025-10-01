@@ -1,6 +1,6 @@
 <li class="list-group-item text-center">
     <strong>{{ producto.descripcion }}</strong> - ${{ producto.precio }}
-    <button type="submit" class="btn btn-info ms-4" (click)="emitirDetalleProducto(producto)">
-      Ver Detalle
+    <button type="submit" class="btn btn-info ms-4" (click)="editarProducto(producto.id!)">
+      Editar Producto
     </button>
 </li>
